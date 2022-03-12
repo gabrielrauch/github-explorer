@@ -10,7 +10,7 @@ module.exports = {
   entry: path.resolve(__dirname, 'src', 'index.jsx'),
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -23,8 +23,8 @@ module.exports = {
   plugins: [
     isDevelopment && new ReactRefreshWebpackPlugin(),
     new HtmlWebpackPlugin({
-      template: path.resolve(__dirname, 'public', 'index.html')
-    })
+      template: path.resolve(__dirname, 'public', 'index.html'),
+    }),
   ].filter(Boolean),
   module: {
     rules: [
@@ -35,16 +35,16 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
-              isDevelopment && require.resolve('react-refresh/babel')
-            ].filter(Boolean)
-          }
-        }
+              isDevelopment && require.resolve('react-refresh/babel'),
+            ].filter(Boolean),
+          },
+        },
       },
       {
         test: /\.scss$/,
         exclude: /node_modules/,
         use: ['style-loader', 'css-loader', 'sass-loader'],
-      }
-    ]
-  }
+      },
+    ],
+  },
 }
